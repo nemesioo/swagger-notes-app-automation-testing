@@ -15,6 +15,7 @@ dotenv.config();
  */
 export default defineConfig({
   testDir: './tests',
+  timeout: 60_000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -38,9 +39,12 @@ export default defineConfig({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.API_TOKEN}`,
     },
+    headless: true,
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
     trace: 'on-first-retry',
   },
-  globalSetup: require.resolve('./tests/api/auth/auth.setup.ts'),
+  globalSetup: require.resolve('./tests/auth/auth.setup.ts'),
 
   /* Configure projects for major browsers */
   projects: [

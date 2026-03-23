@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
-import { test } from "../../../src/fixtures/api.fixture";
-import { notePayload } from "../../../src/test-data/notes.data";
+import { test } from "../../src/fixtures/api.fixture";
+import { notePayload } from "../../src/test-data/notes.data";
 
 test.describe('Notes API', () => {
 
