@@ -7,7 +7,7 @@ export default async () => {
     baseURL: process.env.BASE_URL,
   });
 
-  const response = await context.post('/users/login', {
+  const response = await context.post('/api/users/login', {
     data: {
       email: process.env.EMAIL,
       password: process.env.PASSWORD,

@@ -1,14 +1,22 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class LoginPage extends BasePage {
+
+  readonly emailInput: Locator;
+  readonly passwordInput: Locator;
+  readonly loginButton: Locator;
+
   constructor(page: Page) {
     super(page);
+    this.emailInput = page.getByTestId('login-email');
+    this.passwordInput = page.getByTestId('login-password');
+    this.loginButton = page.getByTestId('login-submit');
   }
 
   async login(email: string, password: string) {
-    await this.page.fill('input[name="email"]', email);
-    await this.page.fill('input[name="password"]', password);
-    await this.page.click('button[type="submit"]');
+    await this.emailInput.fill(email);
+    await this.passwordInput.fill(password);
+    await this.click(this.loginButton);
   }
 }

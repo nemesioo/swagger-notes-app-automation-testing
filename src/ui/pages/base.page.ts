@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 
 export class BasePage {
   readonly page: Page;
@@ -13,5 +13,13 @@ export class BasePage {
 
   async screenshot(name: string) {
     await this.page.screenshot({ path: `reports/${name}.png` });
+  }
+
+  async click(locator: Locator) {
+    await expect(locator).toBeVisible();
+    await expect(locator).toBeEnabled();
+
+    await locator.scrollIntoViewIfNeeded();
+    await locator.click();
   }
 }

@@ -34,17 +34,20 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    baseURL: process.env.API_BASE_URL,
-    extraHTTPHeaders: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.API_TOKEN}`,
-    },
+    baseURL: process.env.BASE_URL,
+    // extraHTTPHeaders: {
+    //   'Content-Type': 'application/json',
+    //   Authorization: `Bearer ${process.env.API_TOKEN}`,
+    // },
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
+
+    //Change this to your test id attribute
+    // testIdAttribute: 'data-testid',
   },
-  globalSetup: require.resolve('./tests/auth/auth.setup.ts'),
+  // globalSetup: require.resolve('./tests/auth/auth.setup.ts'),
 
   /* Configure projects for major browsers */
   projects: [
