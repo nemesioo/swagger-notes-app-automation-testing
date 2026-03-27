@@ -47,7 +47,7 @@ export default defineConfig({
     //Change this to your test id attribute
     // testIdAttribute: 'data-testid',
   },
-  // globalSetup: require.resolve('./tests/auth/auth.setup.ts'),
+  globalSetup: require.resolve('./tests/auth/auth.setup.ts'),
 
   /* Configure projects for major browsers */
   projects: [

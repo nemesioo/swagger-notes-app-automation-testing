@@ -5,17 +5,6 @@ export const test = base.extend<{
   api: APIRequestContext;
   notesApi: NotesAPI;
 }>({
-  api: async ({ }, use) => {
-    const apiContext = await request.newContext({
-      baseURL: process.env.BASE_URL,
-      extraHTTPHeaders: {
-        Authorization: `Bearer ${process.env.API_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-    });
-
-    await use(apiContext);
-  },
   notesApi: async ({ }, use) => {
     const api = new NotesAPI();
     await api.init();
